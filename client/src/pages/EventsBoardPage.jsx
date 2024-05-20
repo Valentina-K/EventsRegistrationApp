@@ -1,5 +1,6 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Pagination } from "@mui/material";
 import EventsCard from "../components/EventsCard";
+import { useState } from "react";
 
 export const BoardPage = () => {
   const events = [
@@ -668,6 +669,11 @@ export const BoardPage = () => {
       _id: 86,
     },
   ];
+  const [page, setPage] = useState(1);
+  const handleChange = (event) => {
+    setPage(Number(event.target.innerText));
+    console.log(event.selected);
+  };
   return (
     <Container maxWidth="xl">
       <Typography variant="h1" component="h1" style={{ marginBottom: 20 }}>
@@ -677,6 +683,7 @@ export const BoardPage = () => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
+          mb: 2,
           "& > :not(style)": {
             m: 1,
             width: 128,
@@ -688,6 +695,12 @@ export const BoardPage = () => {
           <EventsCard key={event._id} data={event} />
         ))}
       </Box>
+      <Pagination
+        count={10}
+        page={page}
+        onChange={handleChange}
+        sx={{ "& > ul": { justifyContent: "center" } }}
+      />
     </Container>
   );
 };

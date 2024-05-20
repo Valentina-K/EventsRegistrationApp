@@ -19,31 +19,70 @@ export const RegistrationPage = () => {
       <Box
         component="form"
         sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          "& .MuiTextField-root": {
+            m: 1,
+            width: "25ch",
+          },
         }}
         noValidate
         autoComplete="off"
       >
-        <TextField id="name" label="Full name" type="text" variant="filled" />
-        <TextField id="email" label="Email" type="password" variant="filled" />
+        <TextField
+          required
+          id="name"
+          label="Full name"
+          type="text"
+          variant="standard"
+        />
+        <TextField
+          required
+          id="email"
+          label="Email"
+          type="email"
+          variant="standard"
+        />
         <TextField
           id="birthday"
-          label="Date of birth"
-          type="password"
-          autoComplete="current-password"
-          variant="filled"
+          helperText="Date of birth"
+          type="date"
+          variant="standard"
         />
-        <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="female"
-          name="radio-buttons-group"
+        <FormLabel
+          id="radio-buttons-group-label"
+          sx={{ fontSize: "1.5rem", fontWeight: "700" }}
         >
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
-          <FormControlLabel value="other" control={<Radio />} label="Other" />
+          Where did you hear about this event?
+        </FormLabel>
+        <RadioGroup
+          aria-labelledby="radio-buttons-group-label"
+          defaultValue="social"
+          name="radio-buttons-group"
+          sx={{
+            flexDirection: "row",
+          }}
+        >
+          <FormControlLabel
+            value="social"
+            control={<Radio />}
+            label="Social media"
+          />
+          <FormControlLabel
+            value="friends"
+            control={<Radio />}
+            label="Friends"
+          />
+          <FormControlLabel
+            value="myself"
+            control={<Radio />}
+            label="Found myself"
+          />
         </RadioGroup>
-        <Button variant="contained">Register</Button>
+        <Button variant="contained" sx={{ width: "168px" }}>
+          Register
+        </Button>
       </Box>
     </Container>
   );

@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import ParticipantsCard from "../components/PartcipantsCard";
+import { useParams } from "react-router-dom";
 
 const particip = [
   { name: "John Due", email: "jphndue@MediaList.com" },
@@ -18,6 +19,9 @@ const particip = [
   { name: "John Due12", email: "jphndue@MediaList.com" },
 ];
 export const ParticipantsPage = () => {
+  const { eventId } = useParams();
+  console.log(eventId);
+  //get participants of the event with the id = eventId
   return (
     <Container maxWidth="xl">
       <Typography variant="h1" component="h2" style={{ marginBottom: 20 }}>
