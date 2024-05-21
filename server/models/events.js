@@ -10,9 +10,11 @@ const eventSchema = new Schema({
   },
   eventDate: {
     type: Date,
+    required
   },
   organization: {
     type: String,
+    required
   },
 });
 
